@@ -16,25 +16,17 @@ exports.getindex = (req,res,) =>{
 }; // "/" index
 
 exports.getContact = (req,res) =>{
-    res.render('contact', { 
-        name: paramsjob,
-        content: paramsName});
+    res.render('contact');
 } // "/contact" GET method
 
 exports.getthanks = (req,res) =>{
-    res.render('thanks', { 
-        name: paramsjob,
-        content: paramsName});
+    res.render('thanks');
 } // "/thanks" thanks method
 exports.geterror = (req,res) =>{
-    res.render('error', { 
-        name: paramsjob,
-        content: paramsName});
+    res.render('error');
 } // "/error" error method
 exports.getcourses = (req,res) =>{
-    res.render('courses', { 
-        name: paramsjob,
-        content: paramsName});
+    res.render('courses');
 } // "/courses" courses method
 /**
  * Listing 12.9 (p. 182)
