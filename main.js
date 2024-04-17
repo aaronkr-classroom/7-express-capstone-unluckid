@@ -1,31 +1,39 @@
 // main.js
 // Capstone 2: Express
 "use strict";
-
-// 앱 설정
-
-/**
- * Listing 12.7 (p. 179)
- * ejs 레이아웃 렌더링
- */
-
-
-/**
- * Listing 12.4 (p. 177)
- * body-parser의 추가
- */
-
-
-/**
- * Listing 12.6 (p. 178)
- * 각 페이지 및 요청 타입을 위한 라우트 추가
- */
-
-
-/**
- * Listing 12.12 (p. 184)
- * 에러 처리 라우트 
- */
-
-
+//상수나 변수 모두 정의 (const)
 // 3000번 포트로 리스닝 설정
+const port =3000,
+    express = require('express'),
+    layouts = require('express-ejs-layouts'),
+    homeController =require('./controllers/homeController'),
+    errorController= require('./controllers/errorController'),
+    app = express();
+    //2단계 앱 설정( set함수, use함수)
+    app.set("port",process.env.PORT ||port);
+    app.set("view engine","ejs");
+
+    app.use(layouts);
+    app.use(express.static("public"));
+    // 바꿀 내용
+    app.get("/:job/:name",homeController.getindex);
+    app.get("/conact",homeController.getcontact);
+    app.get("/thanks",homeController.getthanks);
+    app.get("/courses",homeController.getcourses);
+
+    
+    app.get("/test", (req,res)=>{
+        
+        res.sendFile(`./public/test.html`,{
+            root:'./'
+       });
+    });
+
+    app.use(errorController.logErrors);
+    app.use(errorController.resNotFound);
+    app.use(errorController.resInternalError);
+
+    //마지막 listen 함수
+    app.listen(app.get("port"),() => {
+        console.log(`Server at: http://localhost:${app.get("port")}`);
+    });
