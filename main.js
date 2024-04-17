@@ -12,16 +12,16 @@ const port =3000,
     //2단계 앱 설정( set함수, use함수)
     app.set("port",process.env.PORT ||port);
     app.set("view engine","ejs");
-
+    
     app.use(layouts);
     app.use(express.static("public"));
-    // 바꿀 내용
-    app.get("/:job/:name",homeController.getindex);
-    app.get("/conact",homeController.getcontact);
-    app.get("/thanks",homeController.getthanks);
-    app.get("/courses",homeController.getcourses);
-
+    // 바꿀 내용]
     
+    app.get("/:name/:job?", homeController.getindex);
+    app.get("/contact",homeController.getcontact);
+    app.get("/thanks",homeController.getthanks);
+    app.get("/courses", homeController.getcourses);
+    app.get("/",homeController.gethome);
     app.get("/test", (req,res)=>{
         
         res.sendFile(`./public/test.html`,{
