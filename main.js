@@ -17,7 +17,7 @@ const port =3000,
     app.use(express.static("public"));
     // 바꿀 내용]
     
-    app.get("/:name/:job?", homeController.getindex);
+    app.get("/name/:job?", homeController.getindex);
     app.get("/contact",homeController.getcontact);
     app.get("/thanks",homeController.getthanks);
     app.get("/courses", homeController.getcourses);

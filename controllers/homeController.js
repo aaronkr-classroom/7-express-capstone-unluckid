@@ -18,7 +18,7 @@ exports.getindex = (req,res) =>{
     res.render('index', { 
         name: paramsName,
         job: paramsjob});
-        
+        //바꾸려 했으나 오류가 나서 포기
 }; // "/" index
 
 exports.getcontact = (req,res) =>{
